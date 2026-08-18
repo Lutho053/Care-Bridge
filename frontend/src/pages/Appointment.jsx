@@ -1,22 +1,17 @@
-import { useEffect, useState, useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
+import { assets } from "../assets/assets";
+import RelatedDoctors from "../components/RelatedDoctors";
 import { toast } from "react-toastify";
 import axios from "axios";
-import RelatedDoctors from "../components/RelatedDoctors";
-import { assets } from "../assets/assets";
 
 const Appointment = () => {
   const { docId } = useParams();
-  const {
-    doctors,
-    currencySymbol,
-    backendUrl,
-    token,
-    getDoctorsData
-  } = useContext(AppContext);
-
   const navigate = useNavigate();
+  const [paymentMethod,setPaymentMethod] = useState("")
+
+  const { currencySymbol, backendUrl, token } = useContext(AppContext);
 
   const [docInfo, setDocInfo] = useState(null);
   const [docSlots, setDocSlots] = useState([]);
@@ -25,164 +20,384 @@ const Appointment = () => {
 
   const daysOfWeek = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
-  const findDoctor = () => {
-    const foundDoctor = doctors.find((doc) => doc._id === docId);
-    if (foundDoctor) setDocInfo(foundDoctor);
-  };
+  useEffect(() => {
+    const fetchDoctor = async () => {
+      try {
+        const { data } = await axios.get(`${backendUrl}/api/user/doctor/${docId}`);
+
+        if (data.success) {
+          setDocInfo(data.doctor);
+        } else {
+          toast.error(data.message);
+        }
+      } catch {
+        toast.error("Failed to fetch doctor");
+      }
+    };
+
+    fetchDoctor();
+  }, [docId, backendUrl]);
 
   const getAvailableSlots = () => {
     if (!docInfo) return;
 
-    const slotsBooked = docInfo.slots_booked || {};
     const today = new Date();
-    const newSlots = [];
+    const slotsBooked = docInfo.slots_booked || {};
+    const allSlots = [];
 
     for (let i = 0; i < 7; i++) {
-      let currentDate = new Date(today);
+      const currentDate = new Date(today);
       currentDate.setDate(today.getDate() + i);
+
       const endTime = new Date(currentDate);
       endTime.setHours(21, 0, 0, 0);
 
-      if (today.getDate() === currentDate.getDate()) {
-        currentDate.setHours(currentDate.getHours() > 10 ? currentDate.getHours() + 1 : 10);
+      if (i === 0) {
+        currentDate.setHours(Math.max(currentDate.getHours() + 1, 10));
         currentDate.setMinutes(currentDate.getMinutes() > 30 ? 30 : 0);
       } else {
-        currentDate.setHours(10);
-        currentDate.setMinutes(0);
+        currentDate.setHours(10, 0, 0, 0);
       }
 
-      let timeSlots = [];
+      const daySlots = [];
+      const slotDate = `${currentDate.getDate()}_${currentDate.getMonth() + 1}_${currentDate.getFullYear()}`;
 
       while (currentDate < endTime) {
-        const formattedTime = currentDate.toLocaleTimeString([], {
+        const time = currentDate.toLocaleTimeString([], {
           hour: "2-digit",
           minute: "2-digit",
           hour12: false,
         });
 
-        const day = currentDate.getDate();
-        const month = currentDate.getMonth() + 1;
-        const year = currentDate.getFullYear();
-        const slotDate = `${day}_${month}_${year}`;
-
-        const isAvailable =
-          !slotsBooked[slotDate] || !slotsBooked[slotDate].includes(formattedTime);
-
-        if (isAvailable) {
-          timeSlots.push({
+        if (!slotsBooked[slotDate] || !slotsBooked[slotDate].includes(time)) {
+          daySlots.push({
             datetime: new Date(currentDate),
-            time: formattedTime,
+            time,
           });
         }
 
         currentDate.setMinutes(currentDate.getMinutes() + 30);
       }
 
-      newSlots.push(timeSlots);
+      allSlots.push(daySlots);
     }
 
-    setDocSlots(newSlots);
+    setDocSlots(allSlots);
   };
 
-  const bookAppointment = async () => {
-    if (!token) {
-      toast.warn("Login to book appointment");
-      return navigate("/login");
-    }
-
-    if (!slotTime) {
-      return toast.error("Please select a time slot");
-    }
-
-    const date = docSlots[slotIndex][0].datetime;
-    const slotDate = `${date.getDate()}_${date.getMonth() + 1}_${date.getFullYear()}`;
-
-    try {
-      const { data } = await axios.post(
-        `${backendUrl}/api/user/book-appointment`,
-        {
-          docId,
-          slotDate,
-          slotTime,
-        },
-        {
-          headers: { token },
-        }
-      );
-
-      if (data.success) {
-        toast.success(data.message);
-        await getDoctorsData(); // ✅ refresh context data
-      } else {
-        toast.error(data.message);
-      }
-    } catch (error) {
-      toast.error("Booking failed");
-    }
-  };
-
-  // 🧠 Run once to get doctor info from context
-  useEffect(() => {
-    findDoctor();
-  }, [doctors, docId]);
-
-  // 🧠 Recalculate slots when docInfo changes
   useEffect(() => {
     getAvailableSlots();
   }, [docInfo]);
 
-  return docInfo && (
-    <div>
-      <div className="flex flex-col sm:flex-row gap-4">
+  const bookAppointment = async () => {
+
+  if (!token) {
+    toast.warn("Login to book appointment");
+    return navigate("/login");
+  }
+
+
+  if(!paymentMethod){
+    toast.error("Select payment method");
+    return;
+  }
+
+
+  if (!slotTime) {
+    return toast.error("Select a time slot");
+  }
+
+
+
+  try {
+
+
+    const date = docSlots[slotIndex][0].datetime;
+
+
+    const slotDate =
+    `${date.getDate()}_${date.getMonth()+1}_${date.getFullYear()}`;
+
+
+
+    const {data} = await axios.post(
+
+      `${backendUrl}/api/user/book-appointment`,
+
+      {
+        docId,
+        slotDate,
+        slotTime,
+        paymentMethod
+      },
+
+      {
+        headers:{
+          token
+        }
+      }
+
+    );
+
+
+
+    if(!data.success){
+
+      return toast.error(data.message);
+
+    }
+
+
+
+    // ONLINE PAYMENT
+
+    if(paymentMethod === "online"){
+
+
+      const payRes = await axios.post(
+
+        `${backendUrl}/api/payfast/pay`,
+
+        {
+          amount:docInfo.fees,
+          item_name:`Appointment with ${docInfo.name}`
+        }
+
+      );
+
+
+
+      if(!payRes.data.success){
+
+        return toast.error("Payment failed");
+
+      }
+
+
+
+      const form =
+      document.createElement("form");
+
+
+      form.method="POST";
+
+
+      form.action =
+      "https://sandbox.payfast.co.za/eng/process";
+
+
+
+      Object.entries(payRes.data.paymentData)
+
+      .forEach(([key,value])=>{
+
+
+        const input =
+        document.createElement("input");
+
+
+        input.type="hidden";
+
+        input.name=key;
+
+        input.value=value;
+
+
+        form.appendChild(input);
+
+
+      });
+
+
+
+      document.body.appendChild(form);
+
+
+      form.submit();
+
+
+
+    }
+
+
+
+    // CASH / MEDICAL AID
+
+    else{
+
+
+      toast.success(
+        "Appointment booked successfully"
+      );
+
+
+      navigate("/my-appointments");
+
+
+    }
+
+
+
+  } catch(error){
+
+
+    toast.error(
+      error.response?.data?.message ||
+      error.message
+    );
+
+
+  }
+
+
+};
+ return (
+  docInfo && (
+    <div className="bg-gray-50 min-h-screen px-6 md:px-12 lg:px-20 py-16">
+
+      {/* PROFILE */}
+      <section className="bg-white rounded-[40px] shadow-sm p-8 grid md:grid-cols-[320px_1fr] gap-10 items-center">
+
+        <img src={docInfo.image} alt={docInfo.name} className="rounded-3xl w-full h-[380px] object-cover bg-blue-50" />
+
         <div>
-          <img className="bg-primary w-full sm:max-w-72 rounded-lg" src={docInfo.image} alt="" />
-        </div>
-
-        <div className="flex-1 border border-gray-400 rounded-lg p-8 py-7 bg-white mx-2 sm:mx-0 mt-[-80px] sm:mt-0">
-          <p className="flex items-center gap-2 text-2xl font-medium text-gray-900">
-            {docInfo.name}
-            <img className="w-5" src={assets.verified_icon} alt="" />
-          </p>
-          <div className="flex items-center gap-2 text-sm mt-1 text-gray-600">
-            <p>{docInfo.degree} - {docInfo.speciality}</p>
-            <button className="py-0.5 px-2 border text-xs rounded-full">{docInfo.experience}</button>
+          <div className="flex items-center gap-3">
+            <h1 className="text-3xl font-bold">{docInfo.name}</h1>
+            <img src={assets.verified_icon} className="w-6" />
           </div>
-          <p className="text-sm text-gray-500 mt-2">{docInfo.about}</p>
-          <p className="mt-2">Appointment fee: <span className="text-gray-700">{currencySymbol}{docInfo.fees}</span></p>
-        </div>
-      </div>
 
-      <div className="sm:ml-72 sm:pl-4 mt-4 font-medium text-gray-700">
-        <p>Booking slots</p>
-        <div className="flex gap-3 items-center w-full overflow-x-scroll mt-4">
-          {docSlots.map((item, index) => (
-            <div
-              onClick={() => setSlotIndex(index)}
-              className={`text-center py-5 min-w-16 rounded-full cursor-pointer ${slotIndex === index ? 'bg-primary text-white' : 'border border-gray-200'}`}
+          <p className="mt-3 text-blue-600 font-medium">{docInfo.degree} • {docInfo.speciality}</p>
+
+          <p className="mt-5 text-gray-600 leading-relaxed">{docInfo.about}</p>
+
+          <div className="flex gap-5 mt-8">
+
+            <div className="bg-gray-50 p-5 rounded-2xl">
+              <p className="text-gray-500 text-sm">Experience</p>
+              <b>{docInfo.experience}</b>
+            </div>
+
+            <div className="bg-gray-50 p-5 rounded-2xl">
+              <p className="text-gray-500 text-sm">Fee</p>
+              <b>{currencySymbol}{docInfo.fees}</b>
+            </div>
+
+          </div>
+        </div>
+
+      </section>
+
+
+      {/* BOOKING */}
+      <section className="bg-white rounded-[40px] shadow-sm mt-12 p-8 md:p-12">
+
+        <h2 className="text-3xl font-bold">Select appointment time</h2>
+
+        <p className="text-gray-500 mt-2">Choose your preferred day and time</p>
+
+
+        <div className="flex gap-4 overflow-x-auto mt-8">
+
+          {docSlots.map((item,index)=>(
+            <div 
               key={index}
+              onClick={()=>setSlotIndex(index)}
+              className={`min-w-[90px] p-5 text-center rounded-3xl cursor-pointer ${
+                slotIndex===index ? "bg-blue-600 text-white" : "bg-gray-50"
+              }`}
             >
               <p>{item[0] && daysOfWeek[item[0].datetime.getDay()]}</p>
-              <p>{item[0] && item[0].datetime.getDate()}</p>
+
+              <b className="text-2xl">
+                {item[0] && item[0].datetime.getDate()}
+              </b>
+
             </div>
           ))}
+
         </div>
-        <div className="flex items-center gap-3 w-full overflow-x-scroll mt-4">
-          {docSlots[slotIndex]?.map((item, index) => (
-            <p
-              onClick={() => setSlotTime(item.time)}
-              className={`text-sm font-light flex-shrink-0 px-5 py-2 rounded-full cursor-pointer ${item.time === slotTime ? 'bg-primary text-white' : 'text-gray-400 border border-gray-300'}`}
+
+
+        <div className="flex flex-wrap gap-3 mt-8">
+
+          {docSlots[slotIndex]?.map((item,index)=>(
+
+            <button
               key={index}
+              onClick={()=>setSlotTime(item.time)}
+              className={`px-5 py-3 rounded-full ${
+                slotTime===item.time 
+                ? "bg-blue-600 text-white" 
+                : "border text-gray-500"
+              }`}
             >
               {item.time}
-            </p>
-          ))}
-        </div>
-        <button onClick={bookAppointment} className="bg-primary text-white text-sm font-light px-14 py-3 rounded-full my-6">Book an appointment</button>
-      </div>
+            </button>
 
-      <RelatedDoctors docId={docId} speciality={docInfo.speciality} />
+          ))}
+
+        </div>
+
+        <div className="mt-8">
+
+<h3 className="font-bold mb-3">
+Payment Method
+</h3>
+
+
+<select
+
+className="border p-3 rounded-xl"
+
+value={paymentMethod}
+
+onChange={(e)=>setPaymentMethod(e.target.value)}
+
+>
+
+<option value="">
+Select payment
+</option>
+
+
+<option value="online">
+Online Payment
+</option>
+
+
+<option value="cash">
+Cash
+</option>
+
+
+<option value="medical_aid">
+Medical Aid
+</option>
+
+
+</select>
+
+
+</div>
+        <button 
+          onClick={bookAppointment}
+          className="mt-10 bg-blue-600 text-white px-12 py-4 rounded-full font-semibold hover:bg-blue-700 transition"
+        >
+          Confirm Appointment
+        </button>
+
+
+      </section>
+
+
+      <RelatedDoctors docId={docId} speciality={docInfo.speciality}/>
+
+
     </div>
-  );
+  )
+)
 };
+
+
 
 export default Appointment;

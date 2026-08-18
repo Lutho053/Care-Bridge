@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { assets } from "../assets/assets";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -61,6 +62,41 @@ const Navbar = () => {
           </li>
         </ul>
 
+        <Link
+  to="/find-doctor"
+  className="
+    group
+    relative
+    px-4
+    py-2.5
+    rounded-full
+    border-2
+    border-primary
+    text-primary
+    font-medium
+    overflow-hidden
+    transition-all
+    duration-300
+  "
+>
+  <span className="relative z-10 group-hover:text-white transition-colors duration-300">
+    Find the Right Doctor
+  </span>
+
+  <span
+    className="
+      absolute
+      inset-0
+      bg-primary
+      scale-x-0
+      origin-left
+      group-hover:scale-x-100
+      transition-transform
+      duration-300
+    "
+  />
+</Link>
+
         {/* Profile or Login Button */}
         <div className="hidden md:flex items-center gap-4">
           {token ? (
@@ -118,59 +154,133 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu */}
-      {showMobileMenu && (
-        <ul className="md:hidden flex flex-col gap-4 bg-white p-4 rounded shadow-md font-medium">
-          <li>
-            <NavLink
-              to="/"
-              onClick={() => setShowMobileMenu(false)}
-              className="block"
-            >
-              HOME
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/doctors"
-              onClick={() => setShowMobileMenu(false)}
-              className="block"
-            >
-              ALL DOCTORS
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/about"
-              onClick={() => setShowMobileMenu(false)}
-              className="block"
-            >
-              ABOUT
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/contact"
-              onClick={() => setShowMobileMenu(false)}
-              className="block"
-            >
-              CONTACT
-            </NavLink>
-          </li>
-          {!token && (
-            <li>
-              <button
-                onClick={() => {
-                  navigate("/login");
-                  setShowMobileMenu(false);
-                }}
-                className="bg-primary text-white px-6 py-2 rounded-full w-full"
-              >
-                Create Account
-              </button>
-            </li>
-          )}
-        </ul>
-      )}
+      {/* Mobile Menu */}
+{showMobileMenu && (
+<ul className="
+md:hidden 
+flex 
+flex-col 
+gap-4 
+bg-white 
+p-4 
+rounded 
+shadow-md 
+font-medium
+">
+
+<li>
+<NavLink
+to="/"
+onClick={()=>setShowMobileMenu(false)}
+className="block"
+>
+HOME
+</NavLink>
+</li>
+
+
+<li>
+<NavLink
+to="/doctors"
+onClick={()=>setShowMobileMenu(false)}
+className="block"
+>
+ALL DOCTORS
+</NavLink>
+</li>
+
+
+<li>
+<NavLink
+to="/about"
+onClick={()=>setShowMobileMenu(false)}
+className="block"
+>
+ABOUT
+</NavLink>
+</li>
+
+
+<li>
+<NavLink
+to="/contact"
+onClick={()=>setShowMobileMenu(false)}
+className="block"
+>
+CONTACT
+</NavLink>
+</li>
+
+
+{
+token ? (
+
+<>
+
+<li
+onClick={()=>{
+navigate("/my-profile");
+setShowMobileMenu(false);
+}}
+className="cursor-pointer"
+>
+MY PROFILE
+</li>
+
+
+<li
+onClick={()=>{
+navigate("/my-appointments");
+setShowMobileMenu(false);
+}}
+className="cursor-pointer"
+>
+MY APPOINTMENTS
+</li>
+
+
+<li
+onClick={logout}
+className="cursor-pointer text-red-500"
+>
+LOGOUT
+</li>
+
+</>
+
+
+) : (
+
+<li>
+
+<button
+onClick={()=>{
+
+navigate("/login");
+setShowMobileMenu(false);
+
+}}
+className="
+bg-primary 
+text-white 
+px-6 
+py-2 
+rounded-full 
+w-full
+"
+>
+CREATE ACCOUNT
+</button>
+
+</li>
+
+)
+
+}
+
+
+</ul>
+)}
     </div>
   );
 };

@@ -1,3 +1,4 @@
+import pointing_image from './pointing_image.png'
 import appointment_img from './appointment_img.png'
 import header_img from './header_img.png'
 import group_profiles from './group_profiles.png'
@@ -39,6 +40,7 @@ import Pediatricians from './Pediatricians.svg'
 
 
 export const assets = {
+    pointing_image,
     appointment_img,
     header_img,
     group_profiles,

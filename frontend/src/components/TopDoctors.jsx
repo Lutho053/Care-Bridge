@@ -1,54 +1,263 @@
-import { useContext } from "react"; 
-import { useNavigate } from "react-router-dom";
-import { AppContext } from "../context/AppContext";
+import { useContext } from "react"
+import { useNavigate } from "react-router-dom"
+import { AppContext } from "../context/AppContext"
 
 const TopDoctors = () => {
-  const navigate = useNavigate();
-  const { doctors } = useContext(AppContext);
+
+  const navigate = useNavigate()
+
+  const { doctors } = useContext(AppContext)
+
 
   return (
-    <div className="flex flex-col items-center gap-4 my-16 text-gray-900 md:mx-10">
-      {/* Centered Title */}
-      <h1 className="text-3xl font-medium text-center">Top Doctors to Book</h1>
-      <p className="text-center sm:w-1/3 text-sm">
-        Simply browse through our extensive list of trusted doctors.
-      </p>
 
-      {/* Grid for Doctor Cards */}
-      <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 pt-5 gap-y-6 px-3 sm:px-0">
-        {doctors?.slice(0, 10).map((item, index) => (
-          <div 
-            key={item._id || index} 
-            onClick={() => {
-              navigate(`/appointment/${item._id}`);
-              scrollTo(0, 0)}}
-            className="border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500"
-          >
-            {item.image && <img className="bg-blue-50 w-full" src={item.image} alt={item.name} />}
-            <div className="p-4">
-              <div className="flex items-center gap-2 text-sm text-green-500">
-                <p className="w-2 h-2 bg-green-500 rounded-full"></p>
-                <p>Available</p>
-              </div>
-              <p className="text-gray-900 text-lg font-medium">{item.name}</p>
-              <p className="text-gray-600 text-sm">{item.speciality}</p>
-            </div>
-          </div>
-        ))}
+    <section className="
+    px-6
+    md:px-12
+    lg:px-20
+    py-20
+    ">
+
+
+      {/* HEADER */}
+
+      <div className="
+      flex
+      justify-between
+      items-end
+      mb-10
+      ">
+
+
+        <div>
+
+          <h1 className="
+          text-4xl
+          font-bold
+          text-gray-900
+          ">
+
+            Meet our top specialists
+
+          </h1>
+
+
+          <p className="
+          mt-3
+          text-blue-600
+          text-lg
+          font-medium
+          ">
+
+            Experienced doctors ready to help you.
+
+          </p>
+
+
+        </div>
+
+
+
+        <button
+
+        onClick={()=> {
+          navigate("/doctors")
+          scrollTo(0,0)
+        }}
+
+        className="
+        hidden
+        md:block
+        text-blue-600
+        font-medium
+        hover:underline
+        ">
+
+          View all doctors →
+
+        </button>
+
+
       </div>
 
-      {/* "More" Button */}
-      <button
-        onClick={() => {
-          navigate("/doctors");
-          window.scrollTo(0, 0);
-        }}
-        className="bg-blue-100 text-gray-600 text-2xl px-3 py-1.5 rounded-full mt-10"
-      >
-        More
-      </button>
-    </div>
-  );
-};
 
-export default TopDoctors;
+
+
+
+
+      {/* DOCTORS GRID */}
+
+
+      <div className="
+      grid
+      grid-cols-1
+      sm:grid-cols-2
+      md:grid-cols-3
+      gap-8
+">
+        {
+          doctors?.slice(0,10).map((item,index)=>(
+
+
+            <div key={item._id || index} onClick={()=>{navigate(`/appointment/${item._id}`) 
+              scrollTo(0,0)}}className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer">
+
+
+              {/* IMAGE */}
+
+
+              <div className="
+              relative
+              bg-gray-100
+              ">
+
+
+                <img
+
+                src={item.image}
+
+                alt={item.name}
+
+                className="
+                w-full
+                h-82
+                object-cover
+                "
+
+                />
+
+
+
+                {/* AVAILABLE */}
+
+                <div className="
+absolute
+top-4
+right-4
+bg-white
+rounded-full
+px-3
+py-1
+flex
+items-center
+gap-2
+text-xs
+shadow
+">
+
+<span
+className={`
+w-2
+h-2
+rounded-full
+${item.available ? "bg-green-500" : "bg-red-500"}
+`}
+>
+
+</span>
+
+{item.available ? "Available" : "Not Available"}
+
+</div>
+
+              </div>
+
+              {/* DETAILS */}
+
+
+              <div className="
+              p-5
+              ">
+
+                <h2 className="
+                text-2xl
+                font-bold
+                text-gray-900
+                ">
+
+                  {item.name}
+
+                </h2>
+
+                <p className="
+                text-blue-600
+                text-lg
+                font-medium
+                mt-1
+                ">
+
+                  {item.speciality}
+
+                </p>
+
+                <div className="
+                flex
+                justify-between
+                items-center
+                mt-5
+                ">
+
+                  
+
+                  <button
+
+                  className="
+                  bg-blue-600
+                  text-white
+                  px-4
+                  py-2
+                  rounded-full
+                  text-sm
+                  ">
+
+                    Book
+
+                  </button>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          ))
+        }
+
+      </div>
+
+      {/* MOBILE BUTTON */}
+
+      <button
+
+      onClick={()=>{
+
+        navigate("/doctors")
+        scrollTo(0,0)
+
+      }}
+
+      className="
+      md:hidden
+      block
+      mx-auto
+      mt-10
+      bg-blue-600
+      text-white
+      px-8
+      py-3
+      rounded-full
+      ">
+
+        View all doctors
+
+      </button>
+
+
+    </section>
+
+  )
+
+}
+
+
+export default TopDoctors

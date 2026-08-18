@@ -4,6 +4,7 @@ import { AppContext } from "../context/AppContext";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const { backendUrl, token, setToken } = useContext(AppContext);
@@ -114,7 +115,23 @@ const Login = () => {
             ? "Already have an account? Log In"
             : "Don't have an account? Sign Up"}
         </button>
+        <div className="text-right mt-2">
+
+  <Link
+    to="/forgot-password"
+    className="
+      text-sm
+      text-blue-600
+      hover:text-blue-700
+      font-medium
+    "
+  >
+    Forgot password?
+  </Link>
+
+</div>
       </div>
+      
     </form>
   );
 };

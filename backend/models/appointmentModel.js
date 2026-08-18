@@ -1,4 +1,4 @@
-import mongoose from "mongoose"
+import mongoose from "mongoose";
 
 const appointmentSchema = new mongoose.Schema({
   userId: { type: String, required: true },
@@ -9,12 +9,29 @@ const appointmentSchema = new mongoose.Schema({
   docData: { type: Object, required: true },
   amount: { type: Number, required: true },
   date: { type: Number, required: true },
-  cancelled: { type: Boolean, default: false },   // ← this ensures visibility
-  payment: { type: Boolean, default: false },
+  cancelled: { type: Boolean, default: false },
+  payment: { type: String, default: "pending" },
+  paymentMethod: { type: String, default: "" },
   isCompleted: { type: Boolean, default: false },
 });
 
+// 👇 Prevent duplicate active appointments
+appointmentSchema.index(
+  {
+    docId: 1,
+    slotDate: 1,
+    slotTime: 1,
+    cancelled: 1,
+  },
+  {
+    unique: true,
+  }
+);
 
-const appointmentModel = mongoose.models.appointment || mongoose.model('appointment',appointmentSchema)
 
-export default appointmentModel
+
+const appointmentModel =
+  mongoose.models.appointment ||
+  mongoose.model("appointment", appointmentSchema);
+
+export default appointmentModel;
