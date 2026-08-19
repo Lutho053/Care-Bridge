@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-
+import { AppContext } from "../../context/AppContext";
 
 const Appointments = () => {
+
+const { backendUrl } = useContext(AppContext);
 
 
 const [appointments,setAppointments] = useState([]);
@@ -13,25 +15,25 @@ const [appointments,setAppointments] = useState([]);
 const getAppointments = async()=>{
 
 
-try{
+    try{
 
 
-const token = localStorage.getItem("doctorToken");
+        const token = localStorage.getItem("doctorToken");
 
 
-const {data} = await axios.post(
+        const {data} = await axios.post(
 
-"http://localhost:4000/api/doctor/dashboard",
+                `${backendUrl}/api/doctor/dashboard`,
 
-{},
+                {},
 
-{
-headers:{
-Authorization:`Bearer ${token}`
-}
-}
+                {
+                    headers:{
+                        Authorization:`Bearer ${token}`
+                }
+            }
 
-);
+        );
 
 
 

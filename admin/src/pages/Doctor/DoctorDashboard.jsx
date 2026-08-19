@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { AppContext } from "../../context/AppContext";
 
 
 const DoctorDashboard = () => {
+
+    const { backendUrl } = useContext(AppContext);
 
     const [doctor,setDoctor] = useState(null);
     const [appointments,setAppointments] = useState([]);
@@ -20,7 +23,7 @@ const DoctorDashboard = () => {
 
 
             const { data } = await axios.post(
-                "http://localhost:4000/api/doctor/dashboard",
+                `${backendUrl}/api/doctor/dashboard`,
                 {},
                 {
                     headers: {
@@ -94,7 +97,7 @@ setAppointments(activeAppointments);
 
             const { data } = await axios.post(
 
-                "http://localhost:4000/api/doctor/change-availability",
+                `${backendUrl}/api/doctor/change-availability`,
 
                 {
                     docId: doctor._id
@@ -140,7 +143,7 @@ setAppointments(activeAppointments);
 
             const { data } = await axios.post(
 
-                "http://localhost:4000/api/doctor/update-appointment",
+                `${backendUrl}/api/doctor/update-appointment`,
 
                 {
                     appointmentId: id,

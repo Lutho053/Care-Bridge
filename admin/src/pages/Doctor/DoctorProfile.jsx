@@ -1,8 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { AppContext } from "../../context/AppContext";
 
 const DoctorProfile = () => {
+
+  const { backendUrl } = useContext(AppContext);
 
 const [doctor, setDoctor] = useState(null);
 
@@ -34,7 +37,7 @@ try {
   const token = localStorage.getItem("doctorToken");
 
   const { data } = await axios.post(
-    "http://localhost:4000/api/doctor/dashboard",
+    `${backendUrl}/api/doctor/dashboard`,
     {},
     {
       headers: {

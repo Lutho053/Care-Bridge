@@ -5,7 +5,9 @@ export const AppContext = createContext()
 const AppContextProvider = (props) => {
     
     const value = {
-backendUrl:"http://localhost:4000"
+
+    backendUrl: import.meta.env.VITE_BACKEND_URL
+
     }
 
     return (

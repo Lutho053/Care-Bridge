@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { AppContext } from "../../context/AppContext";
 
 const DoctorResetPassword = () => {
+
+    const { backendUrl } = useContext(AppContext);
 
     const { token } = useParams();
 
@@ -57,7 +60,7 @@ const DoctorResetPassword = () => {
 
             const { data } = await axios.post(
 
-                `http://localhost:4000/api/doctor/reset-password/${token}`,
+                `${backendUrl}/api/doctor/reset-password/${token}`,
 
                 {
                     newPassword,

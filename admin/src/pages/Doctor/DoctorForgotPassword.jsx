@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import { AppContext } from "../../context/AppContext";
 
 const DoctorForgotPassword = () => {
+
+    const { backendUrl } = useContext(AppContext);
 
     const [email, setEmail] = useState("");
 
@@ -26,7 +29,7 @@ const DoctorForgotPassword = () => {
             setLoading(true);
 
             const { data } = await axios.post(
-                "http://localhost:4000/api/doctor/forgot-password",
+                `${backendUrl}/api/doctor/forgot-password`,
                 {
                     email
                 }
