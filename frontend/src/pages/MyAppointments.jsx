@@ -308,31 +308,40 @@ const MyAppointments = () => {
               rounded-2xl
               border
               shadow-sm
-              p-5
+              p-4
+              sm:p-5
               "
 
             >
 
 
-              <div className="flex flex-col lg:flex-row gap-6">
+              <div className="
+  flex
+  flex-col
+  sm:flex-row
+  gap-5
+  sm:gap-6
+  items-center
+  sm:items-start
+">
 
 
                 <img
-
-                  className="
-                  w-full
-                  lg:w-40
-                  h-40
-                  object-cover
-                  bg-indigo-50
-                  rounded-xl
-                  "
-
-                  src={item.docData.image}
-
-                  alt={item.docData.name}
-
-                />
+  className="
+    w-44
+    h-44
+    sm:w-48
+    sm:h-48
+    lg:w-56
+    lg:h-56
+    object-cover
+    bg-indigo-50
+    rounded-2xl
+    shrink-0
+  "
+  src={item.docData.image}
+  alt={item.docData.name}
+/>
 
 
                 <div className="flex-1">
