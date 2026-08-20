@@ -174,54 +174,62 @@ const TopDoctors = () => {
             {/* DETAILS */}
 
             <div className="
-  flex
-  items-center
-  justify-between
-  gap-3
-  mt-1
-">
+              p-4
+              sm:p-5
+            ">
 
-  <p className="
-    text-blue-600
-    text-sm
-    sm:text-lg
-    font-medium
-  ">
-    {item.speciality}
-  </p>
+              <h2 className="
+                text-lg
+                sm:text-2xl
+                font-bold
+                text-gray-900
+              ">
+                {item.name}
+              </h2>
 
-  {/* AVAILABLE */}
+              <p className="
+                text-blue-600
+                text-sm
+                sm:text-lg
+                font-medium
+                mt-1
+              ">
+                {item.speciality}
+              </p>
 
-  <div className="
-    flex
-    items-center
-    gap-1.5
-    bg-gray-50
-    px-2.5
-    py-1
-    rounded-full
-    text-xs
-    font-medium
-    whitespace-nowrap
-  ">
 
-    <span
-      className={`
-        w-2
-        h-2
-        rounded-full
-        ${item.available
-          ? "bg-green-500"
-          : "bg-red-500"
-        }
-      `}
-    />
+              {/* BOOK BUTTON */}
 
-    {item.available ? "Available" : "Not Available"}
+              <div className="
+                mt-4
+                sm:mt-5
+              ">
 
-  </div>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    navigate(`/appointment/${item._id}`)
+                    scrollTo(0, 0)
+                  }}
+                  className="
+                    w-full
+                    bg-blue-600
+                    text-white
+                    px-4
+                    py-2.5
+                    rounded-full
+                    text-sm
+                    font-medium
+                    hover:bg-blue-700
+                    transition
+                  "
+                >
+                  Book appointment
+                </button>
 
-</div>
+              </div>
+
+            </div>
 
           </div>
 
