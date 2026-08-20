@@ -31,37 +31,44 @@ const Home = () => {
             </p>
 
 
-            <div className="mt-8 flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-3">
 
               <Link
-                to="/find-doctor"
-                className="
-                bg-blue-600 
-                text-white 
-                px-8 
-                py-3 
-                rounded-full
-              hover:bg-blue-700
-              transition">
-
-                Tell us what you need
-
-              </Link>
-
-
-              <Link
-                to="/about"
-                className="
-                border 
-                border-blue-600
-                text-blue-600
-                px-8
-                py-3
-                rounded-full">
-
-                Learn More
-
-              </Link>
+                    to="/find-doctor"
+                    className="
+                      bg-blue-600
+                      text-white
+                      px-6
+                      sm:px-8
+                      py-3
+                      rounded-full
+                      hover:bg-blue-700
+                      transition
+                      text-center
+                      w-full
+                      sm:w-auto
+                    "
+                  >
+                    Tell us what you need
+                  </Link>
+                    
+                  <Link
+                    to="/about"
+                    className="
+                      border
+                      border-blue-600
+                      text-blue-600
+                      px-6
+                      sm:px-8
+                      py-3
+                      rounded-full
+                      text-center
+                      w-full
+                      sm:w-auto
+                    "
+                  >
+                    Learn More
+                  </Link>
 
             </div>
 
