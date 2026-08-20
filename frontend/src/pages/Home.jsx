@@ -77,7 +77,7 @@ const Home = () => {
 
               <div>
                 <h3 className="font-bold text-2xl">
-                  500+
+                  50+
                 </h3>
                 <p className="text-gray-500">
                   Doctors
@@ -87,7 +87,7 @@ const Home = () => {
 
               <div>
                 <h3 className="font-bold text-2xl">
-                  10k+
+                  2k+
                 </h3>
                 <p className="text-gray-500">
                   Patients
@@ -121,6 +121,7 @@ const Home = () => {
               shadow-xl
               w-full
               h-[500px]
+              sm:h-[300px]
               object-cover
               "
             />
