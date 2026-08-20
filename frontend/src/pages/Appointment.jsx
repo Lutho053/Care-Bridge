@@ -251,85 +251,294 @@ const Appointment = () => {
 
 
 };
- return (
+return (
   docInfo && (
-    <div className="bg-gray-50 min-h-screen px-6 md:px-12 lg:px-20 py-16">
+    <div className="
+      bg-gray-50
+      min-h-screen
+      px-4
+      sm:px-6
+      md:px-12
+      lg:px-20
+      py-10
+      sm:py-12
+      lg:py-16
+    ">
 
       {/* PROFILE */}
-      <section className="bg-white rounded-[40px] shadow-sm p-8 grid md:grid-cols-[320px_1fr] gap-10 items-center">
 
-        <img src={docInfo.image} alt={docInfo.name} className="rounded-3xl w-full h-[380px] object-cover bg-blue-50" />
+      <section className="
+        bg-white
+        rounded-3xl
+        md:rounded-[40px]
+        shadow-sm
+        p-5
+        sm:p-7
+        md:p-8
+        grid
+        md:grid-cols-[320px_1fr]
+        gap-6
+        md:gap-10
+        items-center
+      ">
+
+        {/* DOCTOR IMAGE */}
+
+        <img
+          src={docInfo.image}
+          alt={docInfo.name}
+          className="
+            rounded-2xl
+            md:rounded-3xl
+            w-full
+            h-[280px]
+            sm:h-[340px]
+            md:h-[380px]
+            object-cover
+            bg-blue-50
+          "
+        />
+
+
+        {/* DOCTOR INFO */}
 
         <div>
-          <div className="flex items-center gap-3">
-            <h1 className="text-3xl font-bold">{docInfo.name}</h1>
-            <img src={assets.verified_icon} className="w-6" />
+
+          <div className="
+            flex
+            items-center
+            gap-2
+            flex-wrap
+          ">
+
+            <h1 className="
+              text-2xl
+              sm:text-3xl
+              font-bold
+              text-gray-900
+            ">
+              {docInfo.name}
+            </h1>
+
+            <img
+              src={assets.verified_icon}
+              className="w-5 sm:w-6"
+              alt="Verified doctor"
+            />
+
           </div>
 
-          <p className="mt-3 text-blue-600 font-medium">{docInfo.degree} • {docInfo.speciality}</p>
 
-          <p className="mt-5 text-gray-600 leading-relaxed">{docInfo.about}</p>
+          <p className="
+            mt-2
+            sm:mt-3
+            text-blue-600
+            text-sm
+            sm:text-base
+            font-medium
+          ">
+            {docInfo.degree} • {docInfo.speciality}
+          </p>
 
-          <div className="flex gap-5 mt-8">
 
-            <div className="bg-gray-50 p-5 rounded-2xl">
-              <p className="text-gray-500 text-sm">Experience</p>
-              <b>{docInfo.experience}</b>
+          <p className="
+            mt-4
+            sm:mt-5
+            text-gray-600
+            text-sm
+            sm:text-base
+            leading-relaxed
+          ">
+            {docInfo.about}
+          </p>
+
+
+          {/* EXPERIENCE + FEE */}
+
+          <div className="
+            grid
+            grid-cols-2
+            gap-3
+            sm:flex
+            sm:gap-5
+            mt-6
+            sm:mt-8
+          ">
+
+            <div className="
+              bg-gray-50
+              p-4
+              sm:p-5
+              rounded-2xl
+            ">
+
+              <p className="
+                text-gray-500
+                text-xs
+                sm:text-sm
+              ">
+                Experience
+              </p>
+
+              <b className="text-sm sm:text-base">
+                {docInfo.experience}
+              </b>
+
             </div>
 
-            <div className="bg-gray-50 p-5 rounded-2xl">
-              <p className="text-gray-500 text-sm">Fee</p>
-              <b>{currencySymbol}{docInfo.fees}</b>
+
+            <div className="
+              bg-gray-50
+              p-4
+              sm:p-5
+              rounded-2xl
+            ">
+
+              <p className="
+                text-gray-500
+                text-xs
+                sm:text-sm
+              ">
+                Fee
+              </p>
+
+              <b className="text-sm sm:text-base">
+                {currencySymbol}{docInfo.fees}
+              </b>
+
             </div>
 
           </div>
+
         </div>
 
       </section>
 
 
       {/* BOOKING */}
-      <section className="bg-white rounded-[40px] shadow-sm mt-12 p-8 md:p-12">
 
-        <h2 className="text-3xl font-bold">Select appointment time</h2>
+      <section className="
+        bg-white
+        rounded-3xl
+        md:rounded-[40px]
+        shadow-sm
+        mt-6
+        sm:mt-8
+        lg:mt-12
+        p-5
+        sm:p-7
+        md:p-12
+      ">
 
-        <p className="text-gray-500 mt-2">Choose your preferred day and time</p>
+        <h2 className="
+          text-2xl
+          sm:text-3xl
+          font-bold
+          text-gray-900
+        ">
+          Select appointment time
+        </h2>
+
+        <p className="
+          text-gray-500
+          text-sm
+          sm:text-base
+          mt-2
+        ">
+          Choose your preferred day and time
+        </p>
 
 
-        <div className="flex gap-4 overflow-x-auto mt-8">
+        {/* DAYS */}
 
-          {docSlots.map((item,index)=>(
-            <div 
+        <div className="
+          flex
+          gap-2
+          sm:gap-4
+          overflow-x-auto
+          mt-6
+          sm:mt-8
+          pb-2
+          scrollbar-hide
+        ">
+
+          {docSlots.map((item, index) => (
+
+            <div
               key={index}
-              onClick={()=>setSlotIndex(index)}
-              className={`min-w-[90px] p-5 text-center rounded-3xl cursor-pointer ${
-                slotIndex===index ? "bg-blue-600 text-white" : "bg-gray-50"
-              }`}
+              onClick={() => setSlotIndex(index)}
+              className={`
+                min-w-[68px]
+                sm:min-w-[90px]
+                p-3
+                sm:p-5
+                text-center
+                rounded-2xl
+                sm:rounded-3xl
+                cursor-pointer
+                transition
+                ${slotIndex === index
+                  ? "bg-blue-600 text-white"
+                  : "bg-gray-50 text-gray-700"
+                }
+              `}
             >
-              <p>{item[0] && daysOfWeek[item[0].datetime.getDay()]}</p>
 
-              <b className="text-2xl">
-                {item[0] && item[0].datetime.getDate()}
+              <p className="
+                text-xs
+                sm:text-sm
+                font-medium
+              ">
+                {item[0] &&
+                  daysOfWeek[item[0].datetime.getDay()]
+                }
+              </p>
+
+              <b className="
+                text-xl
+                sm:text-2xl
+              ">
+                {item[0] &&
+                  item[0].datetime.getDate()
+                }
               </b>
 
             </div>
+
           ))}
 
         </div>
 
 
-        <div className="flex flex-wrap gap-3 mt-8">
+        {/* TIME SLOTS */}
 
-          {docSlots[slotIndex]?.map((item,index)=>(
+        <div className="
+          flex
+          flex-wrap
+          gap-2
+          sm:gap-3
+          mt-6
+          sm:mt-8
+        ">
+
+          {docSlots[slotIndex]?.map((item, index) => (
 
             <button
               key={index}
-              onClick={()=>setSlotTime(item.time)}
-              className={`px-5 py-3 rounded-full ${
-                slotTime===item.time 
-                ? "bg-blue-600 text-white" 
-                : "border text-gray-500"
-              }`}
+              onClick={() => setSlotTime(item.time)}
+              className={`
+                px-4
+                sm:px-5
+                py-2.5
+                sm:py-3
+                rounded-full
+                text-sm
+                transition
+                ${slotTime === item.time
+                  ? "bg-blue-600 text-white"
+                  : "border border-gray-200 text-gray-600 hover:border-blue-400"
+                }
+              `}
             >
               {item.time}
             </button>
@@ -338,64 +547,97 @@ const Appointment = () => {
 
         </div>
 
-        <div className="mt-8">
 
-<h3 className="font-bold mb-3">
-Payment Method
-</h3>
+        {/* PAYMENT */}
+
+        <div className="mt-7 sm:mt-8">
+
+          <h3 className="
+            font-bold
+            mb-3
+            text-gray-900
+          ">
+            Payment Method
+          </h3>
+
+          <select
+            className="
+              border
+              border-gray-200
+              p-3
+              rounded-xl
+              w-full
+              sm:w-auto
+              min-w-[200px]
+              text-sm
+              bg-white
+              outline-none
+              focus:border-blue-500
+            "
+            value={paymentMethod}
+            onChange={(e) => setPaymentMethod(e.target.value)}
+          >
+
+            <option value="">
+              Select payment
+            </option>
+
+            <option value="online">
+              Online Payment
+            </option>
+
+            <option value="cash">
+              Cash
+            </option>
+
+            <option value="medical_aid">
+              Medical Aid
+            </option>
+
+          </select>
+
+        </div>
 
 
-<select
+        {/* CONFIRM */}
 
-className="border p-3 rounded-xl"
-
-value={paymentMethod}
-
-onChange={(e)=>setPaymentMethod(e.target.value)}
-
->
-
-<option value="">
-Select payment
-</option>
-
-
-<option value="online">
-Online Payment
-</option>
-
-
-<option value="cash">
-Cash
-</option>
-
-
-<option value="medical_aid">
-Medical Aid
-</option>
-
-
-</select>
-
-
-</div>
-        <button 
+        <button
           onClick={bookAppointment}
-          className="mt-10 bg-blue-600 text-white px-12 py-4 rounded-full font-semibold hover:bg-blue-700 transition"
+          className="
+            mt-8
+            sm:mt-10
+            bg-blue-600
+            text-white
+            px-8
+            sm:px-12
+            py-3.5
+            sm:py-4
+            rounded-full
+            font-semibold
+            text-sm
+            sm:text-base
+            w-full
+            sm:w-auto
+            hover:bg-blue-700
+            transition
+          "
         >
           Confirm Appointment
         </button>
 
-
       </section>
 
 
-      <RelatedDoctors docId={docId} speciality={docInfo.speciality}/>
+      {/* RELATED DOCTORS */}
 
+      <RelatedDoctors
+        docId={docId}
+        speciality={docInfo.speciality}
+      />
 
     </div>
   )
-)
+);
 };
 
 
