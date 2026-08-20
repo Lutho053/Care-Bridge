@@ -652,8 +652,8 @@ const forgotDoctorPassword = async (req, res) => {
 
 
         // Frontend reset page
-        const resetUrl =
-            `http://localhost:5174/doctor/reset-password/${resetToken}`;
+       const resetUrl =
+    `${process.env.FRONTEND_URL}/doctor/reset-password/${resetToken}`;
 
 
         const transporter = nodemailer.createTransport({
