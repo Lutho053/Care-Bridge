@@ -137,7 +137,7 @@ const Home = () => {
 
       {/* Specialities */}
 
-      <section className="px-6 md:px-16 lg:px-24 py-10">
+      <section className="px-6 md:px-16 lg:px-24 py-6">
 
         <SpecialityMenu/>
 
@@ -145,7 +145,7 @@ const Home = () => {
 
       {/* Doctors */}
 
-      <section className="px-6 md:px-16 lg:px-24 py-10">
+      <section className="px-6 md:px-16 lg:px-24 py-4">
         <TopDoctors/>
       </section>
 
