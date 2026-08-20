@@ -750,13 +750,19 @@ const forgotDoctorPassword = async (req, res) => {
 
 
     } catch (error) {
-    console.log("FORGOT DOCTOR PASSWORD ERROR:", error);
 
-    res.status(500).json({
-        success: false,
-        message: error.message
-    });
-}
+        console.log(error);
+
+        return res.json({
+
+            success: false,
+
+            message: "Password reset is unavailable in the V1 preview. Please contact the CareBridge administrator to reset your password."
+
+        });
+
+    }
+
 };
 
 const resetDoctorPassword = async (req, res) => {

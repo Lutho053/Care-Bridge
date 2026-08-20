@@ -15,30 +15,20 @@ export const createPayment = async(req,res)=>{
 
 
         const paymentData = {
+    merchant_id: process.env.PAYFAST_MERCHANT_ID,
+    merchant_key: process.env.PAYFAST_MERCHANT_KEY,
+    amount,
+    item_name,
 
-            merchant_id:
-            "10050479",
+    return_url:
+        `${process.env.FRONTEND_URL}/payment-success`,
 
-            merchant_key:
-            "ki9lgbf2all4n",
+    cancel_url:
+        `${process.env.FRONTEND_URL}/payment-cancel`,
 
-            amount,
-
-            item_name,
-
-
-            return_url:
-            "http://localhost:5173/payment-success",
-
-
-            cancel_url:
-            "http://localhost:5173/payment-cancel",
-
-
-            notify_url:
-            "http://localhost:4000/api/payfast/notify"
-
-        };
+    notify_url:
+        `${process.env.BACKEND_URL}/api/payfast/notify`
+};
 
 
 
