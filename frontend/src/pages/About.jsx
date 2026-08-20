@@ -1,535 +1,489 @@
-import { assets } from "../assets/assets"
+import { assets } from "../assets/assets";
 
 const About = () => {
-
   return (
-
-    <div className="
-    bg-gray-50
-    min-h-screen
-    text-gray-900
-    px-6
-    md:px-12
-    lg:px-20
-    py-16
-    ">
-
+    <div
+      className="
+        bg-gray-50
+        min-h-screen
+        text-gray-900
+        px-4
+        sm:px-6
+        md:px-12
+        lg:px-20
+        py-10
+        sm:py-12
+        lg:py-16
+      "
+    >
 
       {/* HERO SECTION */}
 
-      <section className="
-      grid
-      md:grid-cols-2
-      gap-12
-      items-center
-      ">
-
+      <section
+        className="
+          grid
+          md:grid-cols-2
+          gap-8
+          md:gap-12
+          items-center
+        "
+      >
 
         {/* LEFT */}
 
         <div>
 
-
-          <p className="
-          text-blue-600
-          uppercase
-          tracking-widest
-          text-sm
-          mb-4
-          ">
-
+          <p
+            className="
+              text-blue-600
+              uppercase
+              tracking-widest
+              text-xs
+              sm:text-sm
+              font-medium
+              mb-3
+              sm:mb-4
+            "
+          >
             About CareBridge
-
           </p>
 
-
-
-
-          <h1 className="
-          text-5xl
-          lg:text-6xl
-          font-bold
-          leading-tight
-          text-gray-900
-          ">
-
+          <h1
+            className="
+              text-4xl
+              sm:text-5xl
+              lg:text-6xl
+              font-bold
+              leading-[1.08]
+              text-gray-900
+            "
+          >
             Connecting
-            <br/>
-
+            <br />
             patients with
-            <br/>
-
+            <br />
             better healthcare.
-
           </h1>
 
-
-
-
-          <p className="
-          mt-6
-          text-gray-600
-          text-lg
-          max-w-xl
-          ">
-
+          <p
+            className="
+              mt-5
+              sm:mt-6
+              text-gray-600
+              text-base
+              sm:text-lg
+              leading-relaxed
+              max-w-xl
+            "
+          >
             CareBridge makes healthcare simple by
             connecting patients with trusted doctors,
             making appointments faster, easier and more
             convenient.
-
           </p>
 
-
         </div>
-
-
-
 
 
         {/* RIGHT */}
 
         <div>
 
-
           <img
-
-          src={assets.about_image}
-
-          alt="About CareBridge"
-
-          className="
-          rounded-[40px]
-          shadow-xl
-          w-full
-          h-[500px]
-          object-cover
-          "
-
+            src={assets.about_image}
+            alt="About CareBridge"
+            className="
+              rounded-3xl
+              md:rounded-[40px]
+              shadow-xl
+              w-full
+              h-[300px]
+              sm:h-[380px]
+              md:h-[500px]
+              object-cover
+            "
           />
 
-
         </div>
-
-
 
       </section>
 
 
-
-
-
-
-
-
-
       {/* MISSION + VISION */}
 
-
-      <section className="
-      mt-24
-      bg-white
-      rounded-[40px]
-      shadow-sm
-      p-8
-      md:p-14
-      grid
-      md:grid-cols-2
-      gap-10
-      ">
-
-
+      <section
+        className="
+          mt-12
+          sm:mt-16
+          lg:mt-24
+          bg-white
+          rounded-3xl
+          md:rounded-[40px]
+          shadow-sm
+          p-6
+          sm:p-8
+          md:p-14
+          grid
+          md:grid-cols-2
+          gap-8
+          md:gap-10
+        "
+      >
 
         <div>
 
-          <h2 className="
-          text-3xl
-          font-bold
-          mb-5
-          ">
-
+          <h2
+            className="
+              text-2xl
+              sm:text-3xl
+              font-bold
+              mb-3
+              sm:mb-5
+            "
+          >
             Our Mission
-
           </h2>
 
-
-          <p className="
-          text-gray-600
-          leading-relaxed
-          ">
-
+          <p
+            className="
+              text-gray-600
+              text-sm
+              sm:text-base
+              leading-relaxed
+            "
+          >
             We believe healthcare should be accessible,
             convenient and stress-free. CareBridge helps
             patients find trusted doctors and manage
             appointments through a simple digital
             healthcare experience.
-
           </p>
 
-
         </div>
-
-
-
-
-
 
 
         <div>
 
-
-          <h2 className="
-          text-3xl
-          font-bold
-          mb-5
-          ">
-
+          <h2
+            className="
+              text-2xl
+              sm:text-3xl
+              font-bold
+              mb-3
+              sm:mb-5
+            "
+          >
             Our Vision
-
           </h2>
 
-
-
-          <p className="
-          text-gray-600
-          leading-relaxed
-          ">
-
+          <p
+            className="
+              text-gray-600
+              text-sm
+              sm:text-base
+              leading-relaxed
+            "
+          >
             Our vision is to create a connected healthcare
             ecosystem where patients and doctors can
             communicate easily through technology.
-
           </p>
-
-
 
         </div>
 
-
-
       </section>
-
-
-
-
-
-
-
 
 
       {/* STATS */}
 
+      <section
+        className="
+          grid
+          grid-cols-2
+          md:grid-cols-4
+          gap-3
+          sm:gap-5
+          md:gap-6
+          mt-12
+          sm:mt-16
+          lg:mt-20
+        "
+      >
 
-      <section className="
-      grid
-      grid-cols-2
-      md:grid-cols-4
-      gap-6
-      mt-20
-      ">
-
-
-
-        <div className="
-        bg-white
-        rounded-3xl
-        p-8
-        text-center
-        shadow-sm
-        ">
-
-          <h3 className="
-          text-4xl
-          font-bold
-          text-blue-600
-          ">
-
+        <div
+          className="
+            bg-white
+            rounded-2xl
+            sm:rounded-3xl
+            p-5
+            sm:p-8
+            text-center
+            shadow-sm
+          "
+        >
+          <h3
+            className="
+              text-2xl
+              sm:text-4xl
+              font-bold
+              text-blue-600
+            "
+          >
             500+
-
           </h3>
 
-
-          <p className="text-gray-500 mt-2">
-
+          <p className="text-gray-500 text-sm sm:text-base mt-1 sm:mt-2">
             Doctors
-
           </p>
-
-
         </div>
 
 
-
-
-
-
-
-        <div className="
-        bg-white
-        rounded-3xl
-        p-8
-        text-center
-        shadow-sm
-        ">
-
-
-          <h3 className="
-          text-4xl
-          font-bold
-          text-blue-600
-          ">
-
+        <div
+          className="
+            bg-white
+            rounded-2xl
+            sm:rounded-3xl
+            p-5
+            sm:p-8
+            text-center
+            shadow-sm
+          "
+        >
+          <h3
+            className="
+              text-2xl
+              sm:text-4xl
+              font-bold
+              text-blue-600
+            "
+          >
             20k+
-
           </h3>
 
-
-          <p className="text-gray-500 mt-2">
-
+          <p className="text-gray-500 text-sm sm:text-base mt-1 sm:mt-2">
             Patients
-
           </p>
-
-
         </div>
 
 
-
-
-
-
-
-        <div className="
-        bg-white
-        rounded-3xl
-        p-8
-        text-center
-        shadow-sm
-        ">
-
-
-          <h3 className="
-          text-4xl
-          font-bold
-          text-blue-600
-          ">
-
+        <div
+          className="
+            bg-white
+            rounded-2xl
+            sm:rounded-3xl
+            p-5
+            sm:p-8
+            text-center
+            shadow-sm
+          "
+        >
+          <h3
+            className="
+              text-2xl
+              sm:text-4xl
+              font-bold
+              text-blue-600
+            "
+          >
             24/7
-
           </h3>
 
-
-          <p className="text-gray-500 mt-2">
-
+          <p className="text-gray-500 text-sm sm:text-base mt-1 sm:mt-2">
             Support
-
           </p>
-
-
         </div>
 
 
-
-
-
-
-
-        <div className="
-        bg-white
-        rounded-3xl
-        p-8
-        text-center
-        shadow-sm
-        ">
-
-
-          <h3 className="
-          text-4xl
-          font-bold
-          text-blue-600
-          ">
-
+        <div
+          className="
+            bg-white
+            rounded-2xl
+            sm:rounded-3xl
+            p-5
+            sm:p-8
+            text-center
+            shadow-sm
+          "
+        >
+          <h3
+            className="
+              text-2xl
+              sm:text-4xl
+              font-bold
+              text-blue-600
+            "
+          >
             99%
-
           </h3>
 
-
-          <p className="text-gray-500 mt-2">
-
+          <p className="text-gray-500 text-sm sm:text-base mt-1 sm:mt-2">
             Satisfaction
-
           </p>
-
-
         </div>
-
 
       </section>
-
-
-
-
-
-
-
 
 
       {/* WHY CHOOSE US */}
 
+      <section className="
+        mt-14
+        sm:mt-20
+        lg:mt-24
+      ">
 
-      <section className="mt-24">
-
-
-        <h2 className="
-        text-4xl
-        font-bold
-        text-center
-        mb-12
-        ">
-
-
+        <h2
+          className="
+            text-3xl
+            sm:text-4xl
+            font-bold
+            text-center
+            mb-8
+            sm:mb-12
+          "
+        >
           Why choose CareBridge?
-
-
         </h2>
 
 
+        <div
+          className="
+            grid
+            md:grid-cols-3
+            gap-4
+            sm:gap-6
+            md:gap-8
+          "
+        >
 
+          {/* EFFICIENCY */}
 
+          <div
+            className="
+              bg-white
+              rounded-2xl
+              sm:rounded-3xl
+              p-6
+              sm:p-8
+              shadow-sm
+              hover:-translate-y-2
+              transition
+            "
+          >
 
-        <div className="
-        grid
-        md:grid-cols-3
-        gap-8
-        ">
-
-
-
-
-          <div className="
-          bg-white
-          rounded-3xl
-          p-8
-          shadow-sm
-          hover:-translate-y-2
-          transition
-          ">
-
-
-            <h3 className="
-            text-xl
-            font-bold
-            mb-3
-            text-blue-600
-            ">
-
+            <h3
+              className="
+                text-lg
+                sm:text-xl
+                font-bold
+                mb-2
+                sm:mb-3
+                text-blue-600
+              "
+            >
               Efficiency
-
             </h3>
 
-
-            <p className="text-gray-600">
-
+            <p className="
+              text-gray-600
+              text-sm
+              sm:text-base
+              leading-relaxed
+            ">
               Book appointments quickly and manage
               your healthcare without unnecessary delays.
-
             </p>
-
 
           </div>
 
 
+          {/* CONVENIENCE */}
 
+          <div
+            className="
+              bg-white
+              rounded-2xl
+              sm:rounded-3xl
+              p-6
+              sm:p-8
+              shadow-sm
+              hover:-translate-y-2
+              transition
+            "
+          >
 
-
-
-
-
-          <div className="
-          bg-white
-          rounded-3xl
-          p-8
-          shadow-sm
-          hover:-translate-y-2
-          transition
-          ">
-
-
-            <h3 className="
-            text-xl
-            font-bold
-            mb-3
-            text-blue-600
-            ">
-
+            <h3
+              className="
+                text-lg
+                sm:text-xl
+                font-bold
+                mb-2
+                sm:mb-3
+                text-blue-600
+              "
+            >
               Convenience
-
             </h3>
 
-
-            <p className="text-gray-600">
-
+            <p className="
+              text-gray-600
+              text-sm
+              sm:text-base
+              leading-relaxed
+            ">
               Access trusted healthcare professionals
               from anywhere at any time.
-
             </p>
-
 
           </div>
 
 
+          {/* PERSONAL CARE */}
 
+          <div
+            className="
+              bg-white
+              rounded-2xl
+              sm:rounded-3xl
+              p-6
+              sm:p-8
+              shadow-sm
+              hover:-translate-y-2
+              transition
+            "
+          >
 
-
-
-
-
-          <div className="
-          bg-white
-          rounded-3xl
-          p-8
-          shadow-sm
-          hover:-translate-y-2
-          transition
-          ">
-
-
-            <h3 className="
-            text-xl
-            font-bold
-            mb-3
-            text-blue-600
-            ">
-
+            <h3
+              className="
+                text-lg
+                sm:text-xl
+                font-bold
+                mb-2
+                sm:mb-3
+                text-blue-600
+              "
+            >
               Personal Care
-
             </h3>
 
-
-            <p className="text-gray-600">
-
+            <p className="
+              text-gray-600
+              text-sm
+              sm:text-base
+              leading-relaxed
+            ">
               Receive a healthcare experience built
               around your personal needs.
-
             </p>
 
-
           </div>
-
-
-
 
         </div>
 
-
       </section>
 
-
-
     </div>
+  );
+};
 
-  )
-}
-
-
-export default About
+export default About;
