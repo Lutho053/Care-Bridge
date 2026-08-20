@@ -31,7 +31,7 @@ const Home = () => {
             </p>
 
 
-            <div className="flex flex-col sm:flex-row gap-3">
+            <div className="mt-8 flex gap-4 sm:flex-row flex-col items-center">
 
               <Link
                     to="/find-doctor"
