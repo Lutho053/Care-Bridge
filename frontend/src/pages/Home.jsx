@@ -115,16 +115,17 @@ const Home = () => {
           <div>
 
             <img
-              src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2"
-              className="
-              rounded-3xl
-              shadow-xl
-              w-full
-              h-[500px]
-              sm:h-[300px]
-              object-cover
-              "
-            />
+  src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2"
+  className="
+    rounded-3xl
+    shadow-xl
+    w-full
+    h-[300px]
+    sm:h-[400px]
+    lg:h-[500px]
+    object-cover
+  "
+/>
 
           </div>
 
