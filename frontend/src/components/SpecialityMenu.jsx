@@ -221,7 +221,7 @@ const SpecialityMenu = () => {
               transition
             "
           >
-            Find the right doctor
+            We can help
             <span>→</span>
           </Link>
 
