@@ -621,7 +621,7 @@ const forgotDoctorPassword = async (req, res) => {
 
         // Don't reveal whether an email exists
         if (!doctor) {
-
+              
             return res.json({
                 success: true,
                 message: "If an account exists with this email, a password reset link has been sent."
@@ -750,19 +750,13 @@ const forgotDoctorPassword = async (req, res) => {
 
 
     } catch (error) {
+    console.log("FORGOT DOCTOR PASSWORD ERROR:", error);
 
-        console.log(error);
-
-        return res.json({
-
-            success: false,
-
-            message: "Unable to process password reset request"
-
-        });
-
-    }
-
+    res.status(500).json({
+        success: false,
+        message: error.message
+    });
+}
 };
 
 const resetDoctorPassword = async (req, res) => {
