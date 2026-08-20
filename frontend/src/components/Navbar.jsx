@@ -67,18 +67,24 @@ const Navbar = () => {
   className="
     group
     relative
-    px-4
-    py-2.5
+    px-2.5
+    py-2
+    sm:px-4
+    sm:py-2.5
     rounded-full
     border-2
     border-primary
     text-primary
+    text-xs
+    sm:text-base
     font-medium
+    whitespace-nowrap
     overflow-hidden
     transition-all
     duration-300
   "
 >
+
   <span className="relative z-10 group-hover:text-white transition-colors duration-300">
     Find the Right Doctor
   </span>
