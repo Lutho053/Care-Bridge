@@ -195,7 +195,8 @@ const Footer = () => {
 
       <p className="text-sm text-gray-500 text-center md:text-left">
 
-        © 2026 CareBridge. All rights reserved.
+        © 2026 CareBridge. All rights reserved. A
+     <a href="https://kazeq.co.za" target="_blank" rel="noopener noreferrer" className="font-medium text-blue-600 hover:underline">Kazeq Technologies</a> product.
 
       </p>
 
