@@ -4,15 +4,33 @@ Care-Bridge is a modern, user-friendly telemedicine platform designed to connect
 
 ---
 
-## 🚀 Features
+🚀 Features
 
-- 🧑‍⚕️ Doctor & Patient Registration/Login
-- 📅 Book & Manage Appointments
-- 📲 Secure Video Consultations
-- 📝 Medical Notes and Prescriptions
-- 🔐 Role-Based Access Control
-- 🧾 Appointment History & Notifications
-- 🌐 Fully Responsive Design for Desktop & Mobile
+👤 Patients
+
+📝 Patient registration and login
+🔐 Secure authentication
+🔎 Browse healthcare professionals
+🩺 Search doctors by speciality
+👨‍⚕️ View doctor profiles
+🟢 View doctor availability
+📅 Book appointments
+🕐 Choose appointment times
+💳 Online payment support
+💵 Cash payment option
+🏥 Medical aid payment option
+📋 Appointment history
+❌ Appointment cancellation
+📱 Responsive mobile experience
+
+👨‍⚕️ Doctors
+
+📝 Doctor registration and login
+👤 Doctor profile management
+📅 View appointments
+🕐 Manage appointment availability
+🧑‍⚕️ View patient appointment information
+📤 Upload profile information and documents
 
 ---
 
