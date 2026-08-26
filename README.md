@@ -1,67 +1,29 @@
+# 🩺 Care-Bridge: Telemedicine Made Simple
 
-```
-```
-
-````
-# 🩺 CareBridge — Digital Healthcare Platform
-
-CareBridge is a modern digital healthcare platform designed to make it easier for patients to discover healthcare professionals, book appointments, and manage their healthcare journey online.
-
-Built by **Kazeq Technologies**, CareBridge combines a responsive web experience with a scalable backend to connect patients and healthcare professionals through technology.
+Care-Bridge is a modern, user-friendly telemedicine platform designed to connect patients with healthcare providers through secure, real-time virtual consultations. Whether you're managing chronic conditions, booking appointments, or just seeking professional medical advice, Care-Bridge bridges the gap between care and convenience.
 
 ---
 
 ## 🚀 Features
 
-### 👤 Patients
-
-- Patient registration and login
-- Secure authentication
-- Browse healthcare professionals
-- Search doctors by speciality
-- View doctor profiles
-- View doctor availability
-- Book appointments
-- Choose appointment times
-- Online payment support
-- Cash payment option
-- Medical aid payment option
-- Appointment history
-- Appointment cancellation
-- Responsive mobile experience
-
-### 👨‍⚕️ Doctors
-
-- Doctor registration and login
-- Doctor profile management
-- View appointments
-- Manage appointment availability
-- View patient appointment information
-- Upload profile information and documents
-
-### 🔐 Security
-
-- JWT-based authentication
-- Bcrypt password hashing
-- Role-based access
-- Protected API routes
-- Environment-based configuration
-- Cloudinary-based media storage
+- 🧑‍⚕️ Doctor & Patient Registration/Login
+- 📅 Book & Manage Appointments
+- 📲 Secure Video Consultations
+- 📝 Medical Notes and Prescriptions
+- 🔐 Role-Based Access Control
+- 🧾 Appointment History & Notifications
+- 🌐 Fully Responsive Design for Desktop & Mobile
 
 ---
 
-## 🛠️ Technology Stack
+## 🛠️ Tech Stack
 
-| Layer | Technologies |
-|---|---|
-| **Frontend** | React, Vite, Tailwind CSS |
-| **Backend** | Node.js, Express.js |
-| **Database** | MongoDB, Mongoose |
-| **Authentication** | JWT, Bcrypt |
-| **HTTP Client** | Axios |
-| **File Storage** | Cloudinary |
-| **Payments** | PayFast |
-| **Deployment** | Vercel, Render |
+| Layer        | Technologies                                                  |
+|--------------|---------------------------------------------------------------|
+| **Frontend** | React, Tailwind CSS, Axios, React Router                      |
+| **Backend**  | Node.js, Express.js, MongoDB, Mongoose, JWT, Bcrypt, Cloudinary |
+| **Auth**     | JSON Web Tokens (JWT), Bcrypt for Password Security           |
+| **Storage**  | Cloudinary (Profile Images & Documents)                       |
 
 ---
 
@@ -70,377 +32,147 @@ Built by **Kazeq Technologies**, CareBridge combines a responsive web experience
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/Lutho053/Care-Bridge.git
-cd Care-Bridge
-````
+git clone https://github.com/YourUsername/CareBridge.git
+cd CareBridge
+```
 
 ### 2. Backend Setup
 
-Navigate to the backend directory:
-
-```
-```
-
-```
-cd backend
-npm install
+```bash
+cd Backend
+npm start server
 ```
 
-Create a `.env` file inside the `backend` directory.
 
-#### Backend Environment Variables
-
-```
-```
-
-```
+```env
 MONGODB_URI=
 CLOUDINARY_NAME=
 CLOUDINARY_API_KEY=
 CLOUDINARY_SECRET_KEY=
-
-MAIL_HOST=
-MAIL_PORT=
-MAIL_USER=
-MAIL_PASSWORD=
-
 ADMIN_EMAIL=
 ADMIN_PASSWORD=
-
 JWT_SECRET=
 
-FRONTEND_URL=
-BACKEND_URL=
-
-PAYFAST_MERCHANT_ID=
-PAYFAST_MERCHANT_KEY=
-```
-
-> **Important:** Never commit your `.env` file or real credentials to GitHub.
-
-For local development, add your own development credentials to the `.env` file.
-
-### 3. Start the Backend
-
-From the `backend` directory:
+Create a .env file in the backend directory and add your own environment variables.
 
 ```
+
+Then run the backend server:
+
+```bash
+npm start server
 ```
 
-```
-npm start
-```
+### 3. Frontend Setup
 
-The backend API normally runs on:
-
-```
-```
-
-```
-http://localhost:4000
-```
-
-### 4. Frontend Setup
-
-Open another terminal and navigate to the frontend:
-
-```
-```
-
-```
-cd frontend
-npm install
+```bash
+cd ../frontend
 npm run dev
 ```
 
-The frontend will normally be available at:
-
-```
-```
-
-```
-http://localhost:5173
-```
-
----
-
-## 🔑 Environment Variables
-
-CareBridge uses environment variables to keep sensitive configuration outside of the source code.
-
-### Never commit:
-
-```
-```
-
-```
-.env
-.env.local
-```
-
-The repository should only contain a safe example configuration such as:
-
-```
-```
-
-```
-.env.example
-```
-
-Example:
-
-```
-```
-
-```
-MONGODB_URI=
-CLOUDINARY_NAME=
-CLOUDINARY_API_KEY=
-CLOUDINARY_SECRET_KEY=
-
-MAIL_HOST=
-MAIL_PORT=
-MAIL_USER=
-MAIL_PASSWORD=
-
-ADMIN_EMAIL=
-ADMIN_PASSWORD=
-
-JWT_SECRET=
-
-FRONTEND_URL=
-BACKEND_URL=
-
-PAYFAST_MERCHANT_ID=
-PAYFAST_MERCHANT_KEY=
-```
-
-**Do not place real passwords, API keys, database credentials, payment credentials, or private secrets in this repository.**
+The frontend will be served at `http://localhost:4000` by default.
 
 ---
 
 ## 📁 Project Structure
 
 ```
-```
-
-```
-Care-Bridge/
+CareBridge/
 │
-├── backend/
-│   ├── config/
+├── admin/               # React frontend for admins
+│   ├── public/
+│   └── src/
+│       ├── components/
+│       ├── pages/
+│       ├── context/
+│       └── App.js
+│
+├── backend/               # Express backend
 │   ├── controllers/
-│   ├── middleware/
 │   ├── models/
 │   ├── routes/
-│   ├── server.js
-│   └── package.json
+│   ├── middleware/
+│   └── index.js
 │
-├── frontend/
+├── frontend/               # React frontend
 │   ├── public/
-│   ├── src/
-│   │   ├── assets/
-│   │   ├── components/
-│   │   ├── context/
-│   │   ├── pages/
-│   │   ├── App.jsx
-│   │   └── main.jsx
-│   └── package.json
-│
-├── .gitignore
-├── README.md
-└── LICENSE
+│   └── src/
+│       ├── components/
+│       ├── pages/
+│       ├── context/
+│       └── App.js
+└── README.md
 ```
 
 ---
 
-## 👥 User Roles
+## 👩‍⚕️ Roles & Permissions
 
 ### Patient
-
-Patients can:
-
--  Create an account 
--  Log in securely 
--  Find healthcare professionals 
--  Browse doctor specialities 
--  View doctor profiles 
--  View available appointment slots 
--  Book appointments 
--  Select a payment method 
--  View appointments 
--  Cancel appointments 
+- Register and login
+- Book appointments
+- View appointment history
 
 ### Doctor
+- Register and login
+- View assigned appointments
+- Write notes and upload prescriptions
 
-Doctors can:
-
--  Create an account 
--  Log in securely 
--  Manage their profile 
--  Manage availability 
--  View appointments 
--  Manage patient appointments 
--  Upload relevant documents 
-
-### Administrator
-
-The administration system is being developed to support:
-
--  Doctor management 
--  User management 
--  Appointment oversight 
--  Platform statistics 
--  Healthcare professional verification 
+### Admin *(optional future role)*
+- Approve doctors
+- View overall system stats
 
 ---
 
-## 💳 Payments
+## 🔮 Roadmap
 
-CareBridge integrates with **PayFast** for online payment processing.
-
-The application currently supports payment integration for development and testing environments.
-
-Payment credentials must be stored using environment variables and must never be committed to the repository.
-
----
-
-## ☁️ Deployment
-
-CareBridge is designed to support separate frontend and backend deployments.
-
-### Frontend
-
-The React/Vite frontend can be deployed using:
-
-**Vercel**
-
-### Backend
-
-The Node.js/Express backend can be deployed using:
-
-**Render**
-
-Production environment variables should be configured through the deployment platform rather than committed to the repository.
-
----
-
-## 🗺️ Roadmap
-
-### Completed
-
--  Patient registration and login 
--  Doctor registration and login 
--  Doctor profiles 
--  Doctor speciality search 
--  Appointment scheduling 
--  Appointment management 
--  Cloudinary image uploads 
--  Responsive mobile interface 
--  Online payment integration 
-
-### Planned
-
--  Real-time video consultations 
--  Doctor-patient messaging 
--  Medical records 
--  Prescription management 
--  Healthcare analytics 
--  Doctor verification system 
--  Advanced notification system 
--  Mobile application 
--  Expanded healthcare provider integrations 
+- [x] Doctor & Patient Login
+- [x] Appointment Scheduling
+- [x] Cloudinary Profile Uploads
+- [ ] Live Video Call Integration
+- [ ] Real-time Chat Between Doctor & Patient
+- [ ] Payment Gateway Integration (e.g., Stripe)
+- [ ] Analytics Dashboard
 
 ---
 
 ## 📸 Screenshots
 
-Screenshots of the CareBridge platform will be added here.
+Add screenshots of your UI here for better visual understanding.
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome from developers, designers, healthcare professionals, and other contributors interested in improving digital healthcare.
+We welcome contributions from developers, designers, and healthcare professionals.
 
-### 1. Create a feature branch
-
-```
-```
-
-```
-git checkout -b feature/your-feature
-```
-
-### 2. Make your changes
-
-Implement and test your changes locally.
-
-### 3. Commit your changes
-
-```
-```
-
-```
-git add .
-git commit -m "Add your feature"
-```
-
-### 4. Push your branch
-
-```
-```
-
-```
-git push origin feature/your-feature
-```
-
-### 5. Open a Pull Request
-
-Please provide a clear description of the changes made and why they are needed.
+1. Fork the repo
+2. Create your feature branch (`git checkout -b feature/YourFeature`)
+3. Commit your changes (`git commit -m 'Add your feature'`)
+4. Push to the branch (`git push origin feature/YourFeature`)
+5. Open a Pull Request
 
 ---
 
-## 👨‍💻 Developed By
+## 🧑‍💻 Developed By
 
-### Gift Lutho Kazi
-
-**Founder & Lead Developer**
-
-### Kazeq Technologies
-
-Software development and technology partner.
-
-CareBridge is being developed as part of Kazeq Technologies' mission to build practical technology solutions for businesses, healthcare providers, and communities.
+**Gift Lutho Kazi** — Founder & Lead Developer  
+**Kazeq Technologies** — Development Partner
 
 ---
 
 ## 📜 License
 
-This project is licensed under the MIT License.
-
-See the `LICENSE` file for more information.
+This project is licensed under the MIT License. See the `LICENSE` file for more info.
 
 ---
 
 ## 🌐 Contact & Links
 
-### CareBridge
-
-📧 **Email:** [info@carebridge.health](mailto\:info@carebridge.health)
-
-🌍 **Website:** [https://www.kazeq.co.za](https://www.kazeq.co.za)
-
-🐙 **GitHub:** https://github.com/Lutho053/Care-Bridge
+📧 Email: info@carebridge.health  
+🌍 Website: www.kazeq.co.za 
+🐙 GitHub: [github.com/Lutho053/CareBridge](https://github.com/Lutho053/CareBridge)
 
 ---
 
-> CareBridge is committed to using technology to make healthcare more accessible, convenient, and connected.
-
-```
-```
-
-```
-
-That's **one copyable block**. 👍
-```
+> *Care-Bridge is committed to empowering access to healthcare through technology.*
