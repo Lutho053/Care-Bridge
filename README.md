@@ -1,3 +1,53 @@
+🩺 CareBridge — Digital Healthcare Platform
+
+CareBridge is a modern digital healthcare platform designed to make it easier for patients to discover healthcare professionals, book appointments, and manage their healthcare journey online.
+
+Built by Kazeq Technologies, CareBridge combines a responsive web experience with a scalable backend to connect patients and healthcare professionals through technology.
+
+🚀 Features
+👤 Patients
+Patient registration and login
+Secure authentication
+Browse healthcare professionals
+Search doctors by speciality
+View doctor profiles
+View doctor availability
+Book appointments
+Choose appointment times
+Online payment support
+Cash payment option
+Medical aid payment option
+Appointment history
+Appointment cancellation
+Responsive mobile experience
+👨‍⚕️ Doctors
+Doctor registration and login
+Doctor profile management
+View appointments
+Manage appointment availability
+View patient appointment information
+Upload profile information and documents
+🔐 Security
+JWT-based authentication
+Bcrypt password hashing
+Role-based access
+Protected API routes
+Environment-based configuration
+Cloudinary-based media storage
+🛠️ Technology Stack
+Layer	Technologies
+Frontend	React, Vite, Tailwind CSS
+Backend	Node.js, Express.js
+Database	MongoDB, Mongoose
+Authentication	JWT, Bcrypt
+HTTP Client	Axios
+File Storage	Cloudinary
+Payments	PayFast
+Deployment	Vercel, Render
+📦 Installation & Setup
+1. Clone the Repository
+git clone https://github.com/Lutho053/Care-Bridge.git
+cd Care-Bridge
 2. Backend Setup
 
 Navigate to the backend directory:
@@ -179,25 +229,25 @@ Production environment variables should be configured through the deployment pla
 
 🗺️ Roadmap
 Completed
- Patient registration and login
- Doctor registration and login
- Doctor profiles
- Doctor speciality search
- Appointment scheduling
- Appointment management
- Cloudinary image uploads
- Responsive mobile interface
- Online payment integration
+Patient registration and login
+Doctor registration and login
+Doctor profiles
+Doctor speciality search
+Appointment scheduling
+Appointment management
+Cloudinary image uploads
+Responsive mobile interface
+Online payment integration
 Planned
- Real-time video consultations
- Doctor-patient messaging
- Medical records
- Prescription management
- Healthcare analytics
- Doctor verification system
- Advanced notification system
- Mobile application
- Expanded healthcare provider integrations
+Real-time video consultations
+Doctor-patient messaging
+Medical records
+Prescription management
+Healthcare analytics
+Doctor verification system
+Advanced notification system
+Mobile application
+Expanded healthcare provider integrations
 📸 Screenshots
 
 Screenshots of the CareBridge platform will be added here.
@@ -248,6 +298,3 @@ CareBridge
 🐙 GitHub: https://github.com/Lutho053/Care-Bridge
 
 CareBridge is committed to using technology to make healthcare more accessible, convenient, and connected.
-
-
-That's **one copyable block**. 👍
