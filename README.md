@@ -39,19 +39,22 @@ cd CareBridge
 ### 2. Backend Setup
 
 ```bash
-cd server
-npm install
+cd Backend
+npm start server
 ```
 
 
 ```env
-MONGODB_URI='mongodb+srv://Gift:0695790416@cluster0.fbk810c.mongodb.net'
-CLOUDINARY_NAME='dy8jbv3xj'
-CLOUDINARY_API_KEY='388133523614941'
-CLOUDINARY_SECRET_KEY='kqJWZjHLAycsLmyucsiI9yyTgOw'
-ADMIN_EMAIL='admin@carebridge.com'
-ADMIN_PASSWORD='qwrty123'
-JWT_SECRET="kazeq"
+MONGODB_URI=
+CLOUDINARY_NAME=
+CLOUDINARY_API_KEY=
+CLOUDINARY_SECRET_KEY=
+ADMIN_EMAIL=
+ADMIN_PASSWORD=
+JWT_SECRET=
+
+Create a .env file in the backend directory and add your own environment variables.
+
 ```
 
 Then run the backend server:
@@ -76,7 +79,7 @@ The frontend will be served at `http://localhost:4000` by default.
 ```
 CareBridge/
 │
-├── admin/               # React frontend
+├── admin/               # React frontend for admins
 │   ├── public/
 │   └── src/
 │       ├── components/
@@ -84,13 +87,20 @@ CareBridge/
 │       ├── context/
 │       └── App.js
 │
-├── server/               # Express backend
+├── backend/               # Express backend
 │   ├── controllers/
 │   ├── models/
 │   ├── routes/
 │   ├── middleware/
 │   └── index.js
 │
+├── frontend/               # React frontend
+│   ├── public/
+│   └── src/
+│       ├── components/
+│       ├── pages/
+│       ├── context/
+│       └── App.js
 └── README.md
 ```
 
