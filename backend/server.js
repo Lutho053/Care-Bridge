@@ -26,7 +26,7 @@ app.use('/api/admin',adminRouter)
 app.use('/api/doctor',doctorRouter)
 app.use('/api/user',userRouter)
 app.use("/api/payfast",payfastRouter);
-app.use("/api/patient-record", patientRecordRouter);
+app.use("/api/patient-records", patientRecordRouter);
 app.use("/api/prescriptions", prescriptionRouter);
 
 
