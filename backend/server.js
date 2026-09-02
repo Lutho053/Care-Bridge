@@ -7,7 +7,8 @@ import adminRouter from './routes/adminRoute.js'
 import doctorRouter from './routes/doctorRoute.js'
 import userRouter from './routes/userRoute.js'
 import payfastRouter from './routes/payfastRoutes.js'
-
+import patientRecordRouter from "./routes/patientRecordRoutes.js";
+import prescriptionRouter from "./routes/prescriptionRoutes.js";
 
 
 //app config
@@ -25,6 +26,8 @@ app.use('/api/admin',adminRouter)
 app.use('/api/doctor',doctorRouter)
 app.use('/api/user',userRouter)
 app.use("/api/payfast",payfastRouter);
+app.use("/api/patient-record", patientRecordRouter);
+app.use("/api/prescriptions", prescriptionRouter);
 
 
 app.get('/',(req,res)=>{

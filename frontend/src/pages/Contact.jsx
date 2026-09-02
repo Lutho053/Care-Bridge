@@ -232,7 +232,7 @@ const Contact = () => {
                   break-words
                 "
               >
-                support@carebridge.com
+                clients@kazeq.co.za
               </p>
 
             </div>

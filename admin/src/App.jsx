@@ -27,6 +27,9 @@ import ProtectedDoctorRoute from "./components/ProtectedDoctorRoute";
 import DoctorForgotPassword from "./pages/Doctor/DoctorForgotPassword";
 import DoctorResetPassword from "./pages/Doctor/DoctorResetPassword";
 
+import PatientFile from "./pages/Doctor/PatientFile";
+import NewConsultation from "./pages/Doctor/NewConsultation";
+
 const App = () => {
 
   const [doctorToken, setDoctorToken] = useState(
@@ -177,6 +180,40 @@ const App = () => {
 
           }
         />
+
+        <Route
+  path="/doctor/patient/:patientId"
+  element={
+
+    <ProtectedDoctorRoute>
+
+      <DoctorLayout
+        doctorToken={doctorToken}
+        setDoctorToken={setDoctorToken}
+      >
+
+        <PatientFile />
+
+      </DoctorLayout>
+
+    </ProtectedDoctorRoute>
+
+  }
+/>
+
+<Route
+  path="/doctor/patient/:patientId/consultation"
+  element={
+    <ProtectedDoctorRoute>
+      <DoctorLayout
+        doctorToken={doctorToken}
+        setDoctorToken={setDoctorToken}
+      >
+        <NewConsultation />
+      </DoctorLayout>
+    </ProtectedDoctorRoute>
+  }
+/>
 
 
         <Route

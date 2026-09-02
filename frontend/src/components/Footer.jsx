@@ -178,7 +178,7 @@ const Footer = () => {
 
             <br />
 
-            support@carebridge.co.za
+            clients@kazeq.co.za
 
           </li>
 

@@ -65,6 +65,8 @@ const DoctorDashboard = () => {
         !appointment.cancelled
 );
 
+console.log(activeAppointments);
+
 setAppointments(activeAppointments);
 
 
