@@ -20,12 +20,18 @@ const createPatientRecord = async (req, res) => {
       vitals,
     } = req.body;
 
+    console.log("CREATE PATIENT RECORD");
+console.log("doctorId:", doctorId);
+console.log("patientId:", patientId);
+console.log("appointmentId:", appointmentId);
+console.log("body:", req.body);
+
     if (!patientId || !appointmentId) {
-      return res.json({
-        success: false,
-        message: "Patient and appointment are required",
-      });
-    }
+  return res.status(400).json({
+    success: false,
+    message: "Patient ID and appointment ID are required",
+  });
+}
 
     // Verify that this appointment belongs
     // to this doctor and patient
