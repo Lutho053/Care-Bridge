@@ -12,6 +12,11 @@ const PatientFile = () => {
 
   const appointmentId = searchParams.get("appointmentId");
 
+console.log("Patient File:", {
+  patientId,
+  appointmentId,
+});
+
   const navigate = useNavigate();
 
   const { backendUrl } = useContext(AppContext);
@@ -110,7 +115,7 @@ const PatientFile = () => {
         <div>
 
           <button
-            onClick={() => navigate("/doctor/appointments")}
+            onClick={() => navigate("/doctor-appointments")}
             className="
               text-blue-600
               hover:text-blue-700
