@@ -249,27 +249,22 @@ const Appointments = () => {
 
 
               <button
-
-                onClick={() =>
-                  viewPatientFile(item.userId)
-                }
-
-                className="
-                  bg-blue-600
-                  hover:bg-blue-700
-                  text-white
-                  px-6
-                  py-3
-                  rounded-xl
-                  font-medium
-                  transition
-                "
-
-              >
-
-                View Patient File
-
-              </button>
+  onClick={() =>
+    viewPatientFile(item.userId, item._id)
+  }
+  className="
+    bg-blue-600
+    hover:bg-blue-700
+    text-white
+    px-6
+    py-3
+    rounded-xl
+    font-medium
+    transition
+  "
+>
+  View Patient File
+</button>
 
 
             </div>
